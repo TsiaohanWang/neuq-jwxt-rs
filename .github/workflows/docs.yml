@@ -25,6 +25,10 @@ jobs:
       - name: Build crate documentation
         run: cargo doc --no-deps
 
+      - name: Create redirect index
+        run: |
+          echo '<meta http-equiv="refresh" content="0;url=neuq_jwxt_rs/index.html">' > target/doc/index.html
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
