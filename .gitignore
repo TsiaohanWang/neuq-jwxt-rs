@@ -1,4 +1,4 @@
-/target
+target/*
 
 Cargo.lock
 
@@ -8,7 +8,7 @@ Cargo.lock
 .env.production
 .env.test
 
-/.idea
+.idea/
 
 *.json
 *.yaml

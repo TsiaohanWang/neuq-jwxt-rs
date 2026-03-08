@@ -1,3 +1,5 @@
+//! 库的核心内容，包含与[教务系统](https://jwxt.neuq.edu.cn/eams)交互的 HTTP 客户端和相关数据操作。
+
 pub mod client;
 pub mod data;
 pub mod env;
