@@ -8,7 +8,7 @@ async fn main() -> anyhow::Result<()> {
     subscriber_init();
 
     // 从本地 `.env` 文件获取环境变量
-    let (usn, pwd) = env_var()?;
+    let (usn, pwd) = login_var()?;
 
     // 创建客户端并使用环境变量登录
     let client = NeuqClient::new()?;

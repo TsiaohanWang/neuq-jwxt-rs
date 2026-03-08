@@ -1,8 +1,11 @@
+//! 核心数据结构的实现
+
 use super::filter::{ClassroomFilter, Filter};
 use super::log::prelude::*;
 use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
 
+/// 空闲教室查询得到的教室“教学楼”字段
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Building {
     /// 工学馆
@@ -58,6 +61,7 @@ impl Building {
     }
 }
 
+/// 空闲教室查询得到的教室“校区”字段
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Campus {
     /// 学校本部
@@ -89,6 +93,7 @@ impl Campus {
     }
 }
 
+/// 空闲教室查询得到的教室“教室类型（教室设备配置）”字段
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum TypeName {
     /// 普通教室
@@ -160,8 +165,9 @@ impl TypeName {
     }
 }
 
+/// 将空闲教室各字段的 String 转换为其专用数据结构的中间层
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
-pub struct Data(String);
+struct Data(String);
 
 impl Data {
     pub fn to_name(&self) -> Option<String> {
@@ -215,6 +221,7 @@ impl From<String> for Data {
     }
 }
 
+/// 用于表示空闲教室查询得到的教室的数据结构
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct Classroom {
     /// 名称
@@ -230,6 +237,9 @@ pub struct Classroom {
 }
 
 impl Classroom {
+    /// 新建一个无任何有效字段的教室
+    /// 
+    /// - 此时该实例会判定为无效。
     pub fn new() -> Self {
         Self {
             name: None,
@@ -240,6 +250,9 @@ impl Classroom {
         }
     }
 
+    /// 使用给定的 String 初始化一个教室
+    /// 
+    /// String 会通过中间层 `Data(String)` 安全地转换为教室的对应字段。
     pub fn from(
         name: String,
         building: String,
@@ -256,6 +269,9 @@ impl Classroom {
         }
     }
 
+    /// 设置当前教室的 `name` 字段
+    /// 
+    /// - 若传入空字符串会自动转为 `None`。
     pub fn set_name(&mut self, name: Option<String>) {
         match name.as_ref() {
             Some(n) => {
@@ -269,23 +285,27 @@ impl Classroom {
         self.name = name;
     }
 
+    /// 设置当前教室的 `building` 字段 
     pub fn set_building(&mut self, building: Option<Building>) {
         self.building = building;
     }
 
+    /// 设置当前教室的 `campus` 字段 
     pub fn set_campus(&mut self, campus: Option<Campus>) {
         self.campus = campus;
     }
 
+    /// 设置当前教室的 `type_name` 字段 
     pub fn set_type_name(&mut self, type_name: Option<TypeName>) {
         self.type_name = type_name;
     }
 
+    /// 设置当前教室的 `capacity` 字段 
     pub fn set_capacity(&mut self, capacity: Option<u16>) {
         self.capacity = capacity;
     }
 
-    /// 判断当前 `Classroom` 实例是否为无效数据。
+    /// 判断当前 `Classroom` 实例是否为无效数据
     ///
     /// - 若 `name` 字段为 `None`，则实例无效；
     /// - 若除 `name` 以外的所有字段均为 `None`，则实例无效。
@@ -308,50 +328,66 @@ impl Classroom {
     }
 }
 
+/// 空闲教室的集合类型
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ClassroomList(Vec<Classroom>);
 
 impl ClassroomList {
+    /// 创建一个空闲教室的空集合
     pub fn new() -> Self {
         Self(vec![])
     }
 
+    /// 使用给定的 `Classroom` 动态数组初始化集合
     pub fn new_with(vec: Vec<Classroom>) -> Self {
         Self(vec)
     }
 
+    /// 获取集合中空闲教室数
+    /// 
+    /// - 此方法不会保证集合已去重，同时无效教室也会计算在内。
     pub fn len(&self) -> usize {
         self.0.len()
     }
 
+    /// 判断空闲教室集合是否为空
     pub fn is_empty(&self) -> bool {
         self.0.is_empty()
     }
 
+    /// 向集合中新增空闲教室
+    /// 
+    /// - 此方法不会对新增教室进行重复元素的检验。
     pub fn push(&mut self, classroom: Classroom) {
         self.0.push(classroom);
     }
 
+    /// 移除索引处的教室
     pub fn remove(&mut self, idx: usize) {
         self.0.remove(idx);
     }
 
+    /// 设定指定索引处教室的 `name` 字段
     pub fn set_name(&mut self, idx: usize, name: Option<String>) {
         self.0[idx].set_name(name);
     }
 
+    /// 设定指定索引处教室的 `building` 字段
     pub fn set_building(&mut self, idx: usize, building: Option<Building>) {
         self.0[idx].set_building(building);
     }
 
+    /// 设定指定索引处教室的 `campus` 字段
     pub fn set_campus(&mut self, idx: usize, campus: Option<Campus>) {
         self.0[idx].set_campus(campus);
     }
 
+    /// 设定指定索引处教室的 `type_name` 字段
     pub fn set_type_name(&mut self, idx: usize, type_name: Option<TypeName>) {
         self.0[idx].set_type_name(type_name);
     }
 
+    /// 设定指定索引处教室的 `capacity` 字段
     pub fn set_capacity(&mut self, idx: usize, capacity: Option<u16>) {
         self.0[idx].set_capacity(capacity);
     }
@@ -398,6 +434,7 @@ impl ClassroomList {
     }
 }
 
+/// 空闲教室集合类型的迭代器实现
 impl Iterator for ClassroomList {
     type Item = Classroom;
     fn next(&mut self) -> Option<Self::Item> {
@@ -405,6 +442,7 @@ impl Iterator for ClassroomList {
     }
 }
 
+/// 核心数据结构的常用导入
 pub mod prelude {
     pub use super::{Building, Campus, Classroom, ClassroomList, TypeName};
 }

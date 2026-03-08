@@ -1,3 +1,5 @@
+//! 对服务端返回 HTML 文档的解析
+
 use super::data::{Classroom, ClassroomList};
 use super::log::prelude::*;
 use scraper::{Html, Selector};
@@ -7,6 +9,7 @@ use scraper::{Html, Selector};
 /// 第 `TABLE_MAPPING[i]` 个 `td` 元素内容将作为 `Classroom::from` 的第 `i` 个参数传入。
 const TABLE_MAPPING: [usize; 5] = [1, 2, 3, 4, 5];
 
+/// 将空闲教室查询请求返回的 HTML 解析为 `ClassroomList`
 pub fn parse_classroom_html(html_str: String) -> anyhow::Result<ClassroomList> {
     let document = Html::parse_document(html_str.as_str());
     let mut results = Vec::new();
@@ -54,6 +57,7 @@ pub fn parse_classroom_html(html_str: String) -> anyhow::Result<ClassroomList> {
     Ok(ClassroomList::new_with(results))
 }
 
+/// HTML 解析的常用导入
 pub mod prelude {
     pub use super::parse_classroom_html;
 }

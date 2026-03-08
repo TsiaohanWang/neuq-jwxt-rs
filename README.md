@@ -41,7 +41,7 @@ echo NEUQ_PASSWORD=[你的教务系统密码] >> .env
 以下示例演示了如何读取本地 `.env` 文件中的环境变量，并使用新建 HTTP 客户端登录教务系统。
 
 ```rust
-let (usn, pwd) = env_var()?;
+let (usn, pwd) = login_var()?;
 
 let client = NeuqClient::new()?;
 let res = client.login(usn.as_str(), pwd.as_str()).await?;

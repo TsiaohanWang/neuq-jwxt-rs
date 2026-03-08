@@ -7,6 +7,7 @@ pub mod log;
 pub mod parser;
 pub mod query;
 
+/// 核心模块的常用导入
 pub mod prelude {
     pub use super::client::prelude::*;
     pub use super::data::prelude::*;

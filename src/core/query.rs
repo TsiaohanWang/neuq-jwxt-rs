@@ -1,4 +1,4 @@
-//! 包含了客户端发送 POST 请求时所需请求体的 trait，以及几个常用的实现该 trait 的类。
+//! 客户端发送 POST 请求时所需请求体的 trait，以及常用的实现该 trait 的类型
 
 use serde::Serialize;
 
@@ -119,6 +119,7 @@ impl Into<Vec<(String, String)>> for ClassroomQuery {
 
 impl Query for ClassroomQuery {}
 
+/// POST 请求体数据结构的常用导入
 pub mod prelude {
     pub use super::ClassroomQuery;
 }
