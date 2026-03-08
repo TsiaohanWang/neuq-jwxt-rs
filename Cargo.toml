@@ -1,0 +1,42 @@
+[package]
+name = "neuq-jwxt-rs"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.93.1"
+
+[dependencies]
+# 异步运行支持
+tokio = { version = "1.50.0", features = ["full"] }
+
+# HTTP 客户端
+reqwest = { version = "0.13.2", features = ["cookies", "form"] }
+
+# HTML 文档解析
+scraper = "0.25.0"
+
+# 正则匹配
+regex = "1.12.3"
+
+# 客户端登录加密技术
+sha1 = "0.11.0-rc.5"
+hex = "0.4.3"
+
+# 统一的错误处理
+anyhow = "1.0.102"
+
+# 记录日志
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.22", features = ["fmt", "std", "local-time"] }
+
+# 格式化时间字符串获取
+time = { version = "0.3.47", features = ["macros", "parsing"] }
+
+# 本地环境变量读取
+dotenv = "0.15.0"
+
+# 序列化 / 反序列化支持
+serde = { version = "1.0.228",features = ["derive"] }
+# 序列化 / 反序列化 JSON 支持
+serde_json = "1.0.149"
+# 序列化 / 反序列化 YAML 支持
+serde-saphyr = "0.0.21"
