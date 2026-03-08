@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["load_classroom_list_yaml","save_classroom_list_yaml"]};

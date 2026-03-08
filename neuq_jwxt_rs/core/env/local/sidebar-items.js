@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["fetch","fetch_login_var","login_var"]};

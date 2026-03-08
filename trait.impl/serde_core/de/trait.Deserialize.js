@@ -1,0 +1,9 @@
+(function() {
+    const implementors = Object.fromEntries([["neuq_jwxt_rs",[["impl&lt;'de&gt; <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/de/trait.Deserialize.html\" title=\"trait serde_core::de::Deserialize\">Deserialize</a>&lt;'de&gt; for <a class=\"enum\" href=\"neuq_jwxt_rs/core/data/enum.Building.html\" title=\"enum neuq_jwxt_rs::core::data::Building\">Building</a>",0],["impl&lt;'de&gt; <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/de/trait.Deserialize.html\" title=\"trait serde_core::de::Deserialize\">Deserialize</a>&lt;'de&gt; for <a class=\"enum\" href=\"neuq_jwxt_rs/core/data/enum.Campus.html\" title=\"enum neuq_jwxt_rs::core::data::Campus\">Campus</a>",0],["impl&lt;'de&gt; <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/de/trait.Deserialize.html\" title=\"trait serde_core::de::Deserialize\">Deserialize</a>&lt;'de&gt; for <a class=\"enum\" href=\"neuq_jwxt_rs/core/data/enum.TypeName.html\" title=\"enum neuq_jwxt_rs::core::data::TypeName\">TypeName</a>",0],["impl&lt;'de&gt; <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/de/trait.Deserialize.html\" title=\"trait serde_core::de::Deserialize\">Deserialize</a>&lt;'de&gt; for <a class=\"struct\" href=\"neuq_jwxt_rs/core/data/struct.Classroom.html\" title=\"struct neuq_jwxt_rs::core::data::Classroom\">Classroom</a>",0],["impl&lt;'de&gt; <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/de/trait.Deserialize.html\" title=\"trait serde_core::de::Deserialize\">Deserialize</a>&lt;'de&gt; for <a class=\"struct\" href=\"neuq_jwxt_rs/core/data/struct.ClassroomList.html\" title=\"struct neuq_jwxt_rs::core::data::ClassroomList\">ClassroomList</a>",0]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":59,"fragment_lengths":[1687]}

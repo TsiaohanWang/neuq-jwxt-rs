@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["add_none_to_pattern","new_pattern"],"mod":["prelude"],"struct":["ClassroomFilter"],"trait":["Filter"],"type":["FilterPattern"]};

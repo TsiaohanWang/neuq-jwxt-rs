@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Building","Campus","TypeName"],"mod":["prelude"],"struct":["Classroom","ClassroomList"]};

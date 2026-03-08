@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="本项目仍在开发中，可能会出现多次破坏性更新！请谨慎留意你所使用的版本！"><title>neuq_jwxt_rs - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="neuq_jwxt_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.94.0 (4a4ef493e 2026-03-02)" data-channel="1.94.0" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../static.files/storage-e2aeef58.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Crate neuq_jwxt_rs</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../neuq_jwxt_rs/index.html">neuq_<wbr>jwxt_<wbr>rs</a><span class="version">0.1.0</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#功能" title="功能">功能</a></li><li><a href="#快速开始" title="快速开始">快速开始</a><ul><li><a href="#示例" title="示例">示例</a></li></ul></li><li><a href="#版本支持" title="版本支持">版本支持</a></li></ul><h3><a href="#modules">Crate Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>neuq_<wbr>jwxt_<wbr>rs</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/neuq_jwxt_rs/lib.rs.html#1-60">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><blockquote>
+<p>本项目仍在开发中，可能会出现多次破坏性更新！请谨慎留意你所使用的版本！</p>
+</blockquote>
+<p><code>neuq-jwxt-rs</code> 是一个提供能与<a href="https://jwxt.neuq.edu.cn/eams">东北大学秦皇岛分校教务系统</a>交互的 HTTP 客户端和数据处理的库。</p>
+<h3 id="功能"><a class="doc-anchor" href="#功能">§</a>功能</h3>
+<p>目前提供：</p>
+<ul>
+<li>本地 <code>.env</code> 文件的读取；</li>
+<li>教务系统的个人登录；</li>
+<li>对教务系统“空闲教室查询”功能的：
+<ul>
+<li>数据解析与过滤，以及</li>
+<li>支持文件读写的数据结构。</li>
+</ul>
+</li>
+</ul>
+<p>未来将会实现：</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+对 Cloudflare Workers 运行环境的支持；</li>
+<li><input disabled="" type="checkbox"/>
+对教务系统“我的课表”功能的：
+<ul>
+<li>数据解析与过滤，以及</li>
+<li>支持文件读写的数据结构。</li>
+</ul>
+</li>
+</ul>
+<h3 id="快速开始"><a class="doc-anchor" href="#快速开始">§</a>快速开始</h3>
+<p>当你在本地运行时，请创建 <code>.env</code> 文件并执行：</p>
+<div class="example-wrap"><pre class="language-bash"><code>echo NEUQ_USERNAME=[你的教务系统学号] &gt;&gt; .env
+echo NEUQ_PASSWORD=[你的教务系统密码] &gt;&gt; .env</code></pre></div>
+<p>然后在异步 <code>main</code> 函数中使用 <code>env_var</code> 即可进行读取。</p>
+<p>接着使用 <code>NeuqClient</code> 提供的 <code>new</code> 和 <code>login</code> 方法即可完成登录。</p>
+<h4 id="示例"><a class="doc-anchor" href="#示例">§</a>示例</h4>
+<p>以下示例演示了如何读取本地 <code>.env</code> 文件中的环境变量，并使用新建 HTTP 客户端登录教务系统。</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(usn, pwd) = login_var()<span class="question-mark">?</span>;
+ 
+<span class="kw">let </span>client = NeuqClient::new()<span class="question-mark">?</span>;
+<span class="kw">let </span>res = client.login(usn.as_str(), pwd.as_str()).<span class="kw">await</span><span class="question-mark">?</span>;
+ 
+<span class="kw">match </span>res {
+    <span class="bool-val">true </span>=&gt; <span class="macro">info!</span>(<span class="string">"Login successful."</span>),
+    <span class="bool-val">false </span>=&gt; {
+        <span class="macro">error!</span>(<span class="string">"Login failed."</span>);
+        <span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">anyhow::anyhow!</span>(<span class="string">"Login failed."</span>));
+    }
+}</code></pre></div>
+<p>可在 <code>./src/examples</code> 中找到更多应用示例。</p>
+<h3 id="版本支持"><a class="doc-anchor" href="#版本支持">§</a>版本支持</h3>
+<p>本项目最低支持的 Rust 版本（MSRV）为 <code>1.93.1</code>。</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="core/index.html" title="mod neuq_jwxt_rs::core">core</a></dt><dd>库的核心内容，包含与<a href="https://jwxt.neuq.edu.cn/eams">教务系统</a>交互的 HTTP 客户端和相关数据操作。</dd></dl></section></div></main></body></html>

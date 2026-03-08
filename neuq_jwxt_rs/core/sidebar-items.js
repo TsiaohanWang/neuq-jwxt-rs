@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["client","data","env","file","filter","log","parser","prelude","query"]};
